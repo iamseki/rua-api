@@ -1,4 +1,4 @@
-package userusecase
+package userusecases
 
 import (
 	"github.com/iamseki/rua-api/app/protocols"
