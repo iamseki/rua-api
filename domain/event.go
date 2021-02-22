@@ -22,3 +22,17 @@ type EventModel struct {
 type EventSaver interface {
 	Save(EventModel) error
 }
+
+// EventFinderOptions represents the input of the Find Method
+type EventFinderOptions struct {
+	Title           string
+	Place           string
+	PlaceAnnotation string
+	Category        string
+	KeyWords        []string
+}
+
+// EventFinder is the interface needed to be implemented to search an event
+type EventFinder interface {
+	Find(EventFinderOptions) (Event, error)
+}
