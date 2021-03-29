@@ -1,4 +1,4 @@
-package eventusecases
+package event
 
 import (
 	"github.com/iamseki/rua-api/app/protocols"

@@ -1,4 +1,4 @@
-package artistusecases
+package artist
 
 import (
 	"github.com/iamseki/rua-api/app/protocols"

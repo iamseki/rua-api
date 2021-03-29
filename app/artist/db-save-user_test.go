@@ -1,9 +1,10 @@
-package artistusecases
+package artist_test
 
 import (
 	"errors"
 	"testing"
 
+	"github.com/iamseki/rua-api/app/artist"
 	"github.com/iamseki/rua-api/domain"
 )
 
@@ -33,7 +34,7 @@ func TestSaveArtistSucceed(t *testing.T) {
 		return nil
 	}}
 
-	sut := NewDbSaveArtist(r)
+	sut := artist.NewDbSaveArtist(r)
 	err := sut.Save(a)
 	if err != nil {
 		t.Errorf("Error on save artist into repository: %v\n", err)
@@ -46,7 +47,7 @@ func TestSaveArtistError(t *testing.T) {
 		return errors.New("fake error")
 	}}
 
-	sut := NewDbSaveArtist(r)
+	sut := artist.NewDbSaveArtist(r)
 	err := sut.Save(a)
 	if err == nil {
 		t.Error("Expect to be an error with fake error message")

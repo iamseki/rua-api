@@ -1,10 +1,11 @@
-package eventusecases
+package event_test
 
 import (
 	"errors"
 	"testing"
 	"time"
 
+	"github.com/iamseki/rua-api/app/event"
 	"github.com/iamseki/rua-api/domain"
 )
 
@@ -44,7 +45,7 @@ func TestSaveEventSucceed(t *testing.T) {
 		return nil
 	}}
 
-	sut := NewDbSaveEvent(r)
+	sut := event.NewDbSaveEvent(r)
 	err := sut.Save(e)
 	if err != nil {
 		t.Errorf("Error on save event into repository: %v\n", err)
@@ -57,7 +58,7 @@ func TestSaveEventError(t *testing.T) {
 		return errors.New("fake error")
 	}}
 
-	sut := NewDbSaveEvent(r)
+	sut := event.NewDbSaveEvent(r)
 	err := sut.Save(e)
 	if err == nil {
 		t.Error("Expect to be an error with fake error message")

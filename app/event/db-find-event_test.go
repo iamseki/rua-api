@@ -1,9 +1,10 @@
-package eventusecases
+package event_test
 
 import (
 	"errors"
 	"testing"
 
+	"github.com/iamseki/rua-api/app/event"
 	"github.com/iamseki/rua-api/domain"
 )
 
@@ -25,7 +26,7 @@ func TestFindEventSucceed(t *testing.T) {
 	r := &fakeFindRepository{FindFn: func(o domain.EventFinderOptions) (domain.Event, error) {
 		return domain.Event{}, nil
 	}}
-	sut := NewDbFindEvent(r)
+	sut := event.NewDbFindEvent(r)
 	_, err := sut.Find(makeEventFinderOptions())
 	if err != nil {
 		t.Fatalf("Error on find event : %v\n", err)
@@ -36,7 +37,7 @@ func TestFindEventError(t *testing.T) {
 	r := &fakeFindRepository{FindFn: func(o domain.EventFinderOptions) (domain.Event, error) {
 		return domain.Event{}, errors.New("fake error")
 	}}
-	sut := NewDbFindEvent(r)
+	sut := event.NewDbFindEvent(r)
 	_, err := sut.Find(makeEventFinderOptions())
 	if err == nil {
 		t.Fatal("Expected a fake error")

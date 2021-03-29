@@ -1,9 +1,10 @@
-package userusecases
+package user_test
 
 import (
 	"errors"
 	"testing"
 
+	"github.com/iamseki/rua-api/app/user"
 	"github.com/iamseki/rua-api/domain"
 )
 
@@ -30,7 +31,7 @@ func TestSaveUserSucceed(t *testing.T) {
 		return nil
 	}}
 
-	sut := NewDbSaveUser(r)
+	sut := user.NewDbSaveUser(r)
 	err := sut.Save(u)
 	if err != nil {
 		t.Errorf("Error on save user into repository: %v\n", err)
@@ -43,7 +44,7 @@ func TestSaveUserError(t *testing.T) {
 		return errors.New("fake error")
 	}}
 
-	sut := NewDbSaveUser(r)
+	sut := user.NewDbSaveUser(r)
 	err := sut.Save(u)
 	if err == nil {
 		t.Error("Expect to be an error with fake error message")
